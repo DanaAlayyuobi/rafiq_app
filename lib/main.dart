@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
 import 'package:rafiq_app/theme.dart';
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home:LoginScreen() ,
+        home:LoginScreen(),
         theme:lightMode
     );
   }

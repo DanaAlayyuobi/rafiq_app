@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String buttonLabel;
-  final void Function()?onTap;
+  final void Function()? onTap;
 
   const ButtonWidget({super.key, required this.buttonLabel, this.onTap});
 
@@ -16,10 +16,14 @@ class ButtonWidget extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(8),
         ),
-        padding: EdgeInsets.all(15),
-        margin: EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.all(15),
+        margin: const EdgeInsets.symmetric(horizontal: 25),
         child: Center(
-          child: Text(buttonLabel,style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+          child: Text(
+            buttonLabel,
+            style: const TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );

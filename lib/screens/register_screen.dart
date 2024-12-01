@@ -3,16 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
-
-class RegisterScreen extends StatelessWidget {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-  TextEditingController();
-
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({super.key});
 
-  void _onTapRegister(BuildContext context) {//home screen go
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  bool _isVisible = false;
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
+
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  void _onTapRegister(BuildContext context) {
+    //home screen go
   }
 
   @override
@@ -43,6 +51,16 @@ class RegisterScreen extends StatelessWidget {
                 hitText: 'Password',
                 isObscure: true,
                 TextController: _passwordController,
+                iconButton: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isVisible = !_isVisible;
+                      });
+                    },
+                    icon: _isVisible
+                        ? Icon(Icons.visibility)
+                        : Icon(Icons.visibility_off)),
+
               ),
               const SizedBox(
                 height: 6,
@@ -51,20 +69,32 @@ class RegisterScreen extends StatelessWidget {
                 hitText: 'Confirm password',
                 isObscure: true,
                 TextController: _confirmPasswordController,
+                iconButton: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isVisible = !_isVisible;
+                      });
+                    },
+                    icon: _isVisible
+                        ? Icon(Icons.visibility)
+                        : Icon(Icons.visibility_off)),
               ),
               const SizedBox(
                 height: 20,
               ),
               ButtonWidget(
                 buttonLabel: "Register",
-                onTap: (){_onTapRegister(context);},
+                onTap: () {
+                  _onTapRegister(context);
+                },
               ),
               const SizedBox(
                 height: 20,
               ),
               TextButton(
-                  onPressed:(){Navigator.pop(context);
-                  } ,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: Text(
                     "Already have an account , login now",
                     style: TextStyle(
