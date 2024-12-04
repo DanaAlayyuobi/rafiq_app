@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "428619545638",
+    "project_id": "rafiq-4b96a",
+    "storage_bucket": "rafiq-4b96a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428619545638:android:bd40dccaec9997bc5b7ae7",
+        "android_client_info": {
+          "package_name": "com.example.rafiq_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrdMFVtVXQ2JlGXSYB84x5KYNN9wGvgjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
