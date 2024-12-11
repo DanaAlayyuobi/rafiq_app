@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rafiq_app/screens/Login_screen.dart';
+import 'package:rafiq_app/screens/main_screen.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
@@ -19,7 +22,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  void _onTapRegister(BuildContext context) {
+  Future<void> _onTapRegister(BuildContext context) async {
+    if (_passwordController.text == _confirmPasswordController.text) {
+      try {
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MainScreen()),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          print('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          print('The account already exists for that email.');
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
     //home screen go
   }
 
@@ -49,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFeildWidget(
                 hitText: 'Password',
-                isObscure: true,
+                isObscure: _isVisible,
                 TextController: _passwordController,
                 iconButton: IconButton(
                     onPressed: () {
@@ -60,14 +84,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     icon: _isVisible
                         ? Icon(Icons.visibility)
                         : Icon(Icons.visibility_off)),
-
               ),
               const SizedBox(
                 height: 6,
               ),
               TextFeildWidget(
                 hitText: 'Confirm password',
-                isObscure: true,
+                isObscure: _isVisible,
                 TextController: _confirmPasswordController,
                 iconButton: IconButton(
                     onPressed: () {
@@ -93,7 +116,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                    );
                   },
                   child: Text(
                     "Already have an account , login now",
