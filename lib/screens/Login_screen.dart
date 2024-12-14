@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rafiq_app/screens/main_screen.dart';
+import 'package:rafiq_app/screens/all_screen.dart';
 import 'package:rafiq_app/screens/register_screen.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
@@ -23,12 +23,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void _onTapLogin(BuildContext context) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text,
-          password: _passwordController.text
-      );
+          email: _emailController.text, password: _passwordController.text);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
+        MaterialPageRoute(builder: (context) => AllScreen()),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -37,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
         print('Wrong password provided for that user.');
       }
     }
-
   }
 
   @override
@@ -75,10 +72,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                     },
                     icon: _isVisible
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.visibility_off)),
-
-
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off)),
               ),
               const SizedBox(
                 height: 20,
@@ -99,11 +94,28 @@ class _LoginScreenState extends State<LoginScreen> {
                       MaterialPageRoute(builder: (context) => RegisterScreen()),
                     );
                   },
-                  child: Text(
-                    "not a member? Register Now",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontWeight: FontWeight.bold),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "not a member ? ",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      const Text(
+                        "Register Now",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Forget Password ",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ))
             ],
           ),

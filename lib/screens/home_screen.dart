@@ -13,16 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading:Icon(Icons.pets),
-        title: Text("Home"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-          )
-        ],
-      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(

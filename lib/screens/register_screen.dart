@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
-import 'package:rafiq_app/screens/main_screen.dart';
+import 'package:rafiq_app/screens/all_screen.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
@@ -32,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => MainScreen()),
+          MaterialPageRoute(builder: (context) => AllScreen()),
         );
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
@@ -73,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextFeildWidget(
                 hitText: 'Password',
-                isObscure: _isVisible,
+                isObscure: !_isVisible,
                 TextController: _passwordController,
                 iconButton: IconButton(
                     onPressed: () {
@@ -82,15 +82,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       });
                     },
                     icon: _isVisible
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.visibility_off)),
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off)),
               ),
               const SizedBox(
                 height: 6,
               ),
               TextFeildWidget(
                 hitText: 'Confirm password',
-                isObscure: _isVisible,
+                isObscure: !_isVisible,
                 TextController: _confirmPasswordController,
                 iconButton: IconButton(
                     onPressed: () {
@@ -99,8 +99,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       });
                     },
                     icon: _isVisible
-                        ? Icon(Icons.visibility)
-                        : Icon(Icons.visibility_off)),
+                        ? const Icon(Icons.visibility)
+                        : const Icon(Icons.visibility_off)),
               ),
               const SizedBox(
                 height: 20,
@@ -121,11 +121,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
                   },
-                  child: Text(
-                    "Already have an account , login now",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontWeight: FontWeight.bold),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Already have an account , ",
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontWeight: FontWeight.bold,fontSize: 16),
+                      ),
+                      const Text(
+                        "Login Now",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      )
+                    ],
                   ))
             ],
           ),
