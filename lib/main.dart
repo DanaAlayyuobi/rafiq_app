@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
 import 'package:rafiq_app/screens/all_screens.dart';
-import 'package:rafiq_app/screens/home_screen.dart';
 import 'package:rafiq_app/theme.dart';
 
 

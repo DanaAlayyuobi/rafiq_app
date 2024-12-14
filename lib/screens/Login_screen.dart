@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _onTapLogin(BuildContext context) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text, password: _passwordController.text);
       Navigator.push(
         context,
