@@ -67,7 +67,14 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reset Password'),
+        title: const Text(
+          'Reset Password',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+          size: 30// Set the color of the back button to white
+        ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Padding(
@@ -90,7 +97,9 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
             ),
             const SizedBox(height: 20),
             _isLoading
-                ? Center(child: const CircularProgressIndicator()) // Show loading indicator while the email is being sent
+                ? Center(
+                    child:
+                        const CircularProgressIndicator()) // Show loading indicator while the email is being sent
                 : ButtonWidget(
                     buttonLabel: "Send Reset Link",
                     onTap: () {

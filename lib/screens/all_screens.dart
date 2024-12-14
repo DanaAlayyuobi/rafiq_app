@@ -37,7 +37,7 @@ class _AllScreensState extends State<AllScreens> {
             icon: const Icon(Icons.pets)),
         title: const Text(
           "Home",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -45,16 +45,20 @@ class _AllScreensState extends State<AllScreens> {
             icon: const Icon(Icons.person),
           )
         ],
+        iconTheme: const IconThemeData(
+            color: Colors.white,
+            size: 30// Set the color of the back button to white
+        ),
       ),
       drawer: Drawer(
         child: Container(
-          color: const Color(0xFFFFCB00), //Color(0x89EFD46D),
+          color: const Color(0xFFFBEAA3), //Color(0x89EFD46D),
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: const Color(0xFFFFF5CD),
                 ),
                 child: Column(
                   children: [
@@ -129,6 +133,7 @@ class _AllScreensState extends State<AllScreens> {
                     Icon(
                       Icons.favorite,
                       size: 28,
+
                     ),
                     SizedBox(
                       width: 8,
@@ -181,6 +186,7 @@ class _AllScreensState extends State<AllScreens> {
       ),
       body: _screens[_screenIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
         type: BottomNavigationBarType.fixed,
         currentIndex: _screenIndex,
         onTap: (value) {
@@ -188,8 +194,8 @@ class _AllScreensState extends State<AllScreens> {
             _screenIndex = value;
           });
         },
-        unselectedItemColor: Theme.of(context).colorScheme.onSurface,
-        selectedItemColor: Theme.of(context).colorScheme.primary,
+        unselectedItemColor: Colors.white70,
+        selectedItemColor: Colors.white,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),

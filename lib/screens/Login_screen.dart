@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "not a member ? ",
+                        "Not a member ? ",
                         style: TextStyle(
                           fontSize: 16,
                           color: Theme.of(context).colorScheme.onSurface,
