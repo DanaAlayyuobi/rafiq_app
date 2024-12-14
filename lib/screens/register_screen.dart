@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
-import 'package:rafiq_app/screens/all_screen.dart';
+import 'package:rafiq_app/screens/all_screens.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
@@ -32,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => AllScreen()),
+          MaterialPageRoute(builder: (context) => AllScreens()),
         );
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {

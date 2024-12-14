@@ -6,11 +6,11 @@ import 'package:rafiq_app/screens/chat_screen.dart';
 import 'package:rafiq_app/screens/favorite_screen.dart';
 import 'package:rafiq_app/screens/home_screen.dart';
 
-class AllScreen extends StatefulWidget {
-  const AllScreen({super.key});
+class AllScreens extends StatefulWidget {
+  const AllScreens({super.key});
 
   @override
-  State<AllScreen> createState() => _AllScreenState();
+  State<AllScreens> createState() => _AllScreensState();
 }
 
 List<Widget> _screens = [
@@ -19,7 +19,7 @@ List<Widget> _screens = [
   const FavoriteScreen()
 ];
 
-class _AllScreenState extends State<AllScreen> {
+class _AllScreensState extends State<AllScreens> {
   int _screenIndex = 1;
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

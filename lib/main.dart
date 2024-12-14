@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
-import 'package:rafiq_app/screens/all_screen.dart';
+import 'package:rafiq_app/screens/all_screens.dart';
 import 'package:rafiq_app/screens/home_screen.dart';
 import 'package:rafiq_app/theme.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home:FirebaseAuth.instance.currentUser==null?LoginScreen():AllScreen(),
+        home:FirebaseAuth.instance.currentUser==null?LoginScreen():AllScreens(),
         theme:lightMode
     );
   }
