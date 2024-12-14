@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
-import 'package:rafiq_app/screens/chat_screen.dart';
+import 'package:rafiq_app/screens/chat_screens/main_chat_screen.dart';
 import 'package:rafiq_app/screens/favorite_screen.dart';
 import 'package:rafiq_app/screens/home_screen.dart';
 
@@ -14,7 +14,7 @@ class AllScreens extends StatefulWidget {
 }
 
 List<Widget> _screens = [
-  const ChatScreen(),
+  MainChatScreen(),
   const HomeScreen(),
   const FavoriteScreen()
 ];

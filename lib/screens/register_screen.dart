@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/Login_screen.dart';
 import 'package:rafiq_app/screens/all_screens.dart';
+import 'package:rafiq_app/services/auth_services/auth_service.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
@@ -22,7 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _confirmPasswordController =
       TextEditingController();
 
-  Future<void> _onTapRegister(BuildContext context) async {
+ /* Future<void> _onTapRegister(BuildContext context) async {
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
         final credential =
@@ -45,7 +46,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
     }
     //home screen go
+  }*/
+  void _onTapRegister(BuildContext context) {
+    final _auth = AuthService();
+    if(_passwordController.text==_confirmPasswordController.text){
+      try{
+        _auth.signUpWithEmailPassword('online',
+            _emailController.text, _passwordController.text);
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => AllScreens()),
+        );
+      }
+
+      catch(e){
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString(),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
+            ),
+          ),
+        );
+      }
+    }
+    else
+    {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(
+            "Passwords don't match ",
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.inversePrimary),
+          ),
+        ),
+      );
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {

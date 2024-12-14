@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/all_screens.dart';
 import 'package:rafiq_app/screens/password_reset_screen.dart';
 import 'package:rafiq_app/screens/register_screen.dart';
+import 'package:rafiq_app/services/auth_services/auth_service.dart';
 import 'package:rafiq_app/widget/button_widget.dart';
 import 'package:rafiq_app/widget/text_feild_widget.dart';
 
@@ -21,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _isVisible = false;
 
-  void _onTapLogin(BuildContext context) async {
+/*  void _onTapLogin(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: _emailController.text, password: _passwordController.text);
@@ -35,8 +36,30 @@ class _LoginScreenState extends State<LoginScreen> {
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
+    }*/
+
+    void _onTapLogin(BuildContext context) async {
+      final authService = AuthService();
+      try {
+        await authService.signInWithEmailPassword("online",
+            _emailController.text, _passwordController.text);
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AllScreens()));
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(
+              e.toString(),
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.inversePrimary),
+            ),
+          ),
+        );
+      }
     }
-  }
+
 
   @override
   Widget build(BuildContext context) {
