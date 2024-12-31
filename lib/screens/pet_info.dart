@@ -108,7 +108,7 @@ class _PetInfoState extends State<PetInfo> {
             ),
           ),
           SizedBox(height: 80,),
-          ButtonWidget(buttonLabel: 'Adopt Me!',),
+          ButtonWidget(buttonLabel: 'Adopt Me!',onTap: (){},),
         ],
       ),
     );

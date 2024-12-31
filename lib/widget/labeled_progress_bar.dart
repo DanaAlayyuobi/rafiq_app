@@ -31,7 +31,7 @@ class LabeledProgressBar extends StatelessWidget {
           child: LinearProgressIndicator(
             value: progress, // Progress value
             backgroundColor: Colors.grey[300], // Background of the progress bar
-            valueColor: AlwaysStoppedAnimation<Color>(progressColor),
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.orange),
           ),
         ),
       ],
