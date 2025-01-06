@@ -1,7 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/chat_screens/chat_screen.dart';
 import 'package:rafiq_app/services/auth_services/auth_service.dart';
@@ -19,8 +18,8 @@ class MainChatScreen extends StatefulWidget {
 class _HomePageState extends State<MainChatScreen> with WidgetsBindingObserver {
   final ChatService _chatServices = ChatService();
   final AuthService _authService = AuthService();
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
 
   void setStatus(String status) async {
@@ -78,7 +77,8 @@ class _HomePageState extends State<MainChatScreen> with WidgetsBindingObserver {
         },
         status: userData['status'],
       );
-    } else
+    } else {
       return Container();
+    }
   }
 }

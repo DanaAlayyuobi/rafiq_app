@@ -25,7 +25,7 @@ class _PetInfoState extends State<PetInfo> {
           Container(
             width: double.infinity,
             height: 350,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.yellow,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30.0),
@@ -33,7 +33,7 @@ class _PetInfoState extends State<PetInfo> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Padding(
@@ -41,7 +41,7 @@ class _PetInfoState extends State<PetInfo> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Name",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
@@ -57,7 +57,7 @@ class _PetInfoState extends State<PetInfo> {
             ),
           ),
 
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
               children: [
@@ -69,10 +69,10 @@ class _PetInfoState extends State<PetInfo> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
@@ -85,29 +85,29 @@ class _PetInfoState extends State<PetInfo> {
               ],
             ),
           ),
-          SizedBox(height: 20,),
-          Padding(
+          const SizedBox(height: 20,),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               children: [
                 Expanded(child: LabeledProgressBar(label: 'Friendliness', progress: .1,)),
-                Expanded(child: LabeledProgressBar(label: 'Friendliness', progress: 1,)),
+                Expanded(child: LabeledProgressBar(label: 'Trainability', progress: 1,)),
               ],
             ),
           ),
-          SizedBox(height: 20,),
-          Padding(
+          const SizedBox(height: 20,),
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(child: LabeledProgressBar(label: 'Friendliness', progress: .6,)),
-                Expanded(child: LabeledProgressBar(label: 'Friendliness', progress: .9,)),
+                Expanded(child: LabeledProgressBar(label: 'Adaptibility', progress: .6,)),
+                Expanded(child: LabeledProgressBar(label: 'Health', progress: .9,)),
               ],
             ),
           ),
-          SizedBox(height: 80,),
+          const SizedBox(height: 80,),
           ButtonWidget(buttonLabel: 'Adopt Me!',onTap: (){},),
         ],
       ),

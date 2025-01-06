@@ -5,7 +5,7 @@ import 'package:rafiq_app/screens/pet_info.dart';
 class AdoptionCard extends StatelessWidget {
   final String name;
   final String type;
-  final int age;
+  final double age;
   final String Gender;
 
   const AdoptionCard(
