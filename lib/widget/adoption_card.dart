@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rafiq_app/screens/pet_info.dart';
 
@@ -7,22 +6,26 @@ class AdoptionCard extends StatelessWidget {
   final String type;
   final double age;
   final String Gender;
+  final String urlPhoto;
 
-  const AdoptionCard(
-      {super.key,
-      required this.name,
-      required this.type,
-      required this.age,
-      required this.Gender,});
+  const AdoptionCard({
+    super.key,
+    required this.name,
+    required this.type,
+    required this.age,
+    required this.Gender,
+    required this.urlPhoto,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10.0),
         child: GestureDetector(
-          onTap:(){ Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PetInfo()));},
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => PetInfo()));
+          },
           child: Container(
             height: 140,
             width: double.infinity,
@@ -51,18 +54,35 @@ class AdoptionCard extends StatelessWidget {
                     color: Colors.yellow,
                     borderRadius: BorderRadius.circular(15.0),
                   ),
+                  child: Image.network(
+                    fit: BoxFit.fill,
+                    urlPhoto == ""
+                        ? "https://cdn.creazilla.com/silhouettes/7966870/cat-footprint-silhouette-000000-xl.png"
+                        : urlPhoto,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child; // Image loaded
+                      }
+                      return CircularProgressIndicator(); // While loading
+                    },
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.error); // Display on error
+                    },
+                  ),
                 ),
-                const SizedBox(width: 10),
-                 Column(
+                SizedBox(width: 10),
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       name,
-                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                     Text("Type : $type", style: const TextStyle(fontSize: 18)),
                     Text("Age : $age", style: const TextStyle(fontSize: 18)),
-                    Text("Gender : $Gender ", style: const TextStyle(fontSize: 18)),
+                    Text("Gender : $Gender ",
+                        style: const TextStyle(fontSize: 18)),
                   ],
                 )
               ]),

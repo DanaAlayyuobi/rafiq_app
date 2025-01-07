@@ -13,6 +13,7 @@ class PetListService {
       String gender,
       String location,
       String description,
+      String petURLPhoto,
       double friendlinessRate,
       double trainablityRate,
       double healthRate,
@@ -41,6 +42,7 @@ class PetListService {
         trainablityRate,
         healthRate,
         adaptibilityRate,
+        petURLPhoto,
       );
 
       // Save the pet data in Firestore under the specified document ID

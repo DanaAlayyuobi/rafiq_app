@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TextFeildWidget extends StatelessWidget {
@@ -24,6 +23,7 @@ class TextFeildWidget extends StatelessWidget {
       child: Container(
         height: 60,
         child: TextFormField(
+         // validator: (value){},
           style: TextStyle(color: Theme
               .of(context)
               .colorScheme

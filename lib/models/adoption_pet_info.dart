@@ -5,6 +5,7 @@ class AdoptionPetInfo {
   final String gender;
   final String location;
   final String description;
+  final String petURLPhoto;
   final double friendlinessRate;
   final double trainablityRate;
   final double healthRate;
@@ -21,6 +22,7 @@ class AdoptionPetInfo {
     this.trainablityRate,
     this.healthRate,
     this.adaptibilityRate,
+    this.petURLPhoto,
   );
 
   // Convert to Firestore document
@@ -36,22 +38,23 @@ class AdoptionPetInfo {
       "trainablityRate": trainablityRate,
       "healthRate": healthRate,
       "adaptibilityRate": adaptibilityRate,
+      "petURLPhoto":petURLPhoto
     };
   }
 
   // Create from Firestore document
   factory AdoptionPetInfo.fromMap(Map<String, dynamic> map) {
     return AdoptionPetInfo(
-      map["name"],
-      map["type"],
-      map["age"].toDouble(),
-      map["gender"],
-      map["location"],
-      map["description"],
-      map["friendlinessRate"],
-      map["trainablityRate"],
-      map["healthRate"],
-      map["adaptibilityRate"],
-    );
+        map["name"],
+        map["type"],
+        map["age"].toDouble(),
+        map["gender"],
+        map["location"],
+        map["description"],
+        map["friendlinessRate"],
+        map["trainablityRate"],
+        map["healthRate"],
+        map["adaptibilityRate"],
+        map["petURLPhoto"]);
   }
 }
