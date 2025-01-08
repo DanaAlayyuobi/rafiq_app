@@ -16,7 +16,7 @@ class AllScreens extends StatefulWidget {
 List<Widget> _screens = [
   MainChatScreen(),
    HomeScreen(),
-  const FavoriteScreen()
+   FavoriteScreen()
 ];
 
 class _AllScreensState extends State<AllScreens> {

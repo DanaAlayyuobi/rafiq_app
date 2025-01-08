@@ -70,6 +70,18 @@ class _PetInfoScreenState extends State<PetInfoScreen> {
                 ),
                 IconButton(
                     onPressed: () {
+                      if(!_isFav){
+                        _authService.addToFavorites(_authService.getCurrentUser()!.uid
+                        , widget.petInfo);
+                      print(_authService.getCurrentUser()!.uid + widget.petInfo.name +" added secusefully");
+                      }
+                      else
+                        {
+                        _authService.removeFromFavorites(_authService.getCurrentUser()!.uid
+                        , widget.petInfo);
+                        print(_authService.getCurrentUser()!.uid + widget.petInfo.name +" remove secusefully");
+
+                        }
                       setState(() {
                         _isFav = !_isFav;
                       });

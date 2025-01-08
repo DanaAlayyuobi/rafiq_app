@@ -11,21 +11,22 @@ class AdoptionPetInfo {
   final double healthRate;
   final double adaptibilityRate;
   final String userId;
-
+  final String petID;
 
   AdoptionPetInfo(
-    this.name,
-    this.type,
-    this.age,
-    this.gender,
-    this.location,
-    this.description,
-    this.friendlinessRate,
-    this.trainablityRate,
-    this.healthRate,
-    this.adaptibilityRate,
-    this.petURLPhoto, this.userId,
-  );
+      this.name,
+      this.type,
+      this.age,
+      this.gender,
+      this.location,
+      this.description,
+      this.friendlinessRate,
+      this.trainablityRate,
+      this.healthRate,
+      this.adaptibilityRate,
+      this.petURLPhoto,
+      this.userId,
+      this.petID);
 
   // Convert to Firestore document
   Map<String, dynamic> toMap() {
@@ -40,28 +41,28 @@ class AdoptionPetInfo {
       "trainablityRate": trainablityRate,
       "healthRate": healthRate,
       "adaptibilityRate": adaptibilityRate,
-      "petURLPhoto":petURLPhoto,
-      "userId":userId,
-
+      "petURLPhoto": petURLPhoto,
+      "userId": userId,
+      "petID": petID
     };
   }
 
   // Create from Firestore document
   factory AdoptionPetInfo.fromMap(Map<String, dynamic> map) {
     return AdoptionPetInfo(
-        map["name"],
-        map["type"],
-        map["age"].toDouble(),
-        map["gender"],
-        map["location"],
-        map["description"],
-        map["friendlinessRate"],
-        map["trainablityRate"],
-        map["healthRate"],
-        map["adaptibilityRate"],
-        map["petURLPhoto"],
-        map["userId"]??"",
-
+      map["name"],
+      map["type"],
+      map["age"].toDouble(),
+      map["gender"],
+      map["location"],
+      map["description"],
+      map["friendlinessRate"],
+      map["trainablityRate"],
+      map["healthRate"],
+      map["adaptibilityRate"],
+      map["petURLPhoto"],
+      map["userId"] ?? "",
+      map["petID"] ?? "",
     );
   }
 }
