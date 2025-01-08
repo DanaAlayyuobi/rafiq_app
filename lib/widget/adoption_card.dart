@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:rafiq_app/screens/pet_info.dart';
+import 'package:rafiq_app/screens/pet_info_screen.dart';
+
+import '../models/adoption_pet_info.dart';
 
 class AdoptionCard extends StatelessWidget {
-  final String name;
-  final String type;
-  final double age;
-  final String Gender;
-  final String urlPhoto;
-
+  final AdoptionPetInfo pet;
   const AdoptionCard({
     super.key,
-    required this.name,
-    required this.type,
-    required this.age,
-    required this.Gender,
-    required this.urlPhoto,
+  required this.pet,
   });
 
   @override
@@ -24,7 +17,7 @@ class AdoptionCard extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => PetInfo()));
+                context, MaterialPageRoute(builder: (context) => PetInfoScreen(petInfo: pet,)));
           },
           child: Container(
             height: 140,
@@ -56,9 +49,9 @@ class AdoptionCard extends StatelessWidget {
                   ),
                   child: Image.network(
                     fit: BoxFit.fill,
-                    urlPhoto == ""
+                    pet.petURLPhoto == ""
                         ? "https://cdn.creazilla.com/silhouettes/7966870/cat-footprint-silhouette-000000-xl.png"
-                        : urlPhoto,
+                        : pet.petURLPhoto,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) {
                         return child; // Image loaded
@@ -75,13 +68,13 @@ class AdoptionCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name,
+                      pet.name,
                       style: const TextStyle(
                           fontSize: 28, fontWeight: FontWeight.bold),
                     ),
-                    Text("Type : $type", style: const TextStyle(fontSize: 18)),
-                    Text("Age : $age", style: const TextStyle(fontSize: 18)),
-                    Text("Gender : $Gender ",
+                    Text("Type : ${pet.type}", style: const TextStyle(fontSize: 18)),
+                    Text("Age : ${pet.age}", style: const TextStyle(fontSize: 18)),
+                    Text("Gender : ${pet.gender} ",
                         style: const TextStyle(fontSize: 18)),
                   ],
                 )

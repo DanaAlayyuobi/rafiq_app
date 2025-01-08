@@ -25,7 +25,7 @@ class SuccessStoryService {
 
       // Create a new pet object
       final newStory = Story(
-     title,
+         title,
         description,
         urlPhoto,
       );
@@ -42,7 +42,6 @@ class SuccessStoryService {
   Future<List<Story>> fetchStory() async {
     try {
       final querySnapshot = await _firestore.collection('stories').get();
-
       return querySnapshot.docs.map((doc) {
         return Story.fromMap(doc.data());
       }).toList();

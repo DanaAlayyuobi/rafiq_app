@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final PetListService _petListService = PetListService();
-  final SuccessStoryService _successStoryService= SuccessStoryService();
+  final SuccessStoryService _successStoryService = SuccessStoryService();
 
   List<AdoptionPetInfo> _adoptionPetList = [];
   List<Story> _storyList = [];
@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _fetchPets();
+    _fetchStories();
   }
 
   Future<void> _fetchPets() async {
@@ -120,13 +121,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _addStories(BuildContext context) async {
     if (_storyTitle.text.isNotEmpty &&
-        _storyDescriptionController.text.isNotEmpty
-        ) {
+        _storyDescriptionController.text.isNotEmpty) {
       await _successStoryService.addNewStory(
         _storyTitle.text,
         _storyDescriptionController.text,
         _storyURLPhoto.text,
-
       );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("story added successfully!")),
@@ -172,7 +171,9 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const BannerWidget(),
+            BannerWidget(
+              stories: _storyList,
+            ),
             const SizedBox(height: 16),
             const Text(
               "Explore Pets",
@@ -189,11 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             itemBuilder: (context, index) {
                               final pet = _adoptionPetList[index];
                               return AdoptionCard(
-                                name: pet.name,
-                                age: pet.age,
-                                type: pet.type,
-                                Gender: pet.gender,
-                                urlPhoto: pet.petURLPhoto,
+                                pet: pet,
                               );
                             },
                           ),
@@ -238,6 +235,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
   void _showAddPetDialog() {
     showDialog(
       context: context,
@@ -392,6 +390,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
+
   void _showAddStoryDialog() {
     showDialog(
       context: context,
@@ -436,7 +435,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context); // Close the dialog
-                    _ClearStoryPostValues();                  },
+                    _ClearStoryPostValues();
+                  },
                   child: const Text("Cancel"),
                 ),
                 ElevatedButton(

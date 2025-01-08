@@ -7,18 +7,18 @@ class PetListService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future<void> addNewPet(
-      String name,
-      String type,
-      double age,
-      String gender,
-      String location,
-      String description,
-      String petURLPhoto,
-      double friendlinessRate,
-      double trainablityRate,
-      double healthRate,
-      double adaptibilityRate,
-      ) async {
+    String name,
+    String type,
+    double age,
+    String gender,
+    String location,
+    String description,
+    String petURLPhoto,
+    double friendlinessRate,
+    double trainablityRate,
+    double healthRate,
+    double adaptibilityRate,
+  ) async {
     try {
       // Get the current user's ID
       final userId = _auth.currentUser?.uid;
@@ -32,18 +32,18 @@ class PetListService {
 
       // Create a new pet object
       final newPet = AdoptionPetInfo(
-        name,
-        type,
-        age,
-        gender,
-        location,
-        description,
-        friendlinessRate,
-        trainablityRate,
-        healthRate,
-        adaptibilityRate,
-        petURLPhoto,
-      );
+          name,
+          type,
+          age,
+          gender,
+          location,
+          description,
+          friendlinessRate,
+          trainablityRate,
+          healthRate,
+          adaptibilityRate,
+          petURLPhoto,
+          userId);
 
       // Save the pet data in Firestore under the specified document ID
       await _firestore.collection('petsList').doc(PetID).set(newPet.toMap());

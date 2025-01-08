@@ -10,16 +10,20 @@ class Story {
     return {
       "title": title,
       "description": description,
-      "URLPhoto": urlPhoto,
+      "urlPhoto": urlPhoto,
+
+
     };
   }
 
   // Create from Firestore document
   factory Story.fromMap(Map<String, dynamic> map) {
     return Story(
-      map["title"],
-      map["description"],
-      map["urlPhoto"],
+      map["title"]??"",
+      map["description"]??"",
+      map["urlPhoto"]??"",
+
+
     );
   }
 }

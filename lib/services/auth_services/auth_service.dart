@@ -50,4 +50,24 @@ class AuthService {
   Future<void> signOut() async {
     return await _auth.signOut();
   }
+  Future<String?> getEmailByUserId(String userId) async {
+    try {
+      // Fetch the document from Firestore
+      DocumentSnapshot userDoc =
+      await _firestore.collection('Users').doc(userId).get();
+
+      if (userDoc.exists) {
+        // Return the email field if it exists
+        return userDoc['email'];
+      } else {
+        print("No user found with ID: $userId");
+        return null;
+      }
+    } catch (e) {
+      print("Error retrieving email: $e");
+      return null;
+    }
+  }
+
+
 }

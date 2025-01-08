@@ -10,6 +10,8 @@ class AdoptionPetInfo {
   final double trainablityRate;
   final double healthRate;
   final double adaptibilityRate;
+  final String userId;
+
 
   AdoptionPetInfo(
     this.name,
@@ -22,7 +24,7 @@ class AdoptionPetInfo {
     this.trainablityRate,
     this.healthRate,
     this.adaptibilityRate,
-    this.petURLPhoto,
+    this.petURLPhoto, this.userId,
   );
 
   // Convert to Firestore document
@@ -38,7 +40,9 @@ class AdoptionPetInfo {
       "trainablityRate": trainablityRate,
       "healthRate": healthRate,
       "adaptibilityRate": adaptibilityRate,
-      "petURLPhoto":petURLPhoto
+      "petURLPhoto":petURLPhoto,
+      "userId":userId,
+
     };
   }
 
@@ -55,6 +59,9 @@ class AdoptionPetInfo {
         map["trainablityRate"],
         map["healthRate"],
         map["adaptibilityRate"],
-        map["petURLPhoto"]);
+        map["petURLPhoto"],
+        map["userId"]??"",
+
+    );
   }
 }
