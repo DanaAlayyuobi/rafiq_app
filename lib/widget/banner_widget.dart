@@ -75,23 +75,37 @@ class _BannerWidgetState extends State<BannerWidget> {
                       ),
                       const SizedBox(width: 20),
                       ClipOval(
-
                         child: Image.network(
-                          fit: BoxFit.fill,
                           story.urlPhoto == ""
                               ? "https://cdn.creazilla.com/silhouettes/7966870/cat-footprint-silhouette-000000-xl.png"
                               : story.urlPhoto,
                           width: 140, // Set a fixed width
                           height: 140, // Set the same fixed height
-                          loadingBuilder:
-                              (context, child, loadingProgress) {
+                          fit: BoxFit.fill,
+                          loadingBuilder: (context, child, loadingProgress) {
                             if (loadingProgress == null) {
-                              return child; // Image loaded
+                              return child; // Image is fully loaded
                             }
-                            return const CircularProgressIndicator(); // While loading
+                            // Display loading indicator while image is loading
+                            return SizedBox(
+                              width: 140,
+                              height: 140,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes != null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                      (loadingProgress.expectedTotalBytes ?? 1)
+                                      : null,
+                                ),
+                              ),
+                            );
                           },
                           errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error); // Display on error
+                            // Display fallback icon or image in case of error
+                            return const Icon(
+                              Icons.error,
+                              size: 140,
+                            );
                           },
                         ),
                       ),

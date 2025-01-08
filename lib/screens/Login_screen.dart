@@ -20,21 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _isVisible = false;
 
-/*  void _onTapLogin(BuildContext context) async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text, password: _passwordController.text);
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => AllScreens()),
-      );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-    }*/
+
 
     void _onTapLogin(BuildContext context) async {
       final authService = AuthService();
@@ -48,10 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text(
+            title: Center(
+              child: Text(
               e.toString(),
-              style: TextStyle(
-                  color: Theme.of(context).colorScheme.inversePrimary),
+                style: TextStyle(
+                    color: Colors.brown,fontSize: 16),
+              ),
             ),
           ),
         );

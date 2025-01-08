@@ -9,7 +9,7 @@ import 'package:rafiq_app/theme.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home:FirebaseAuth.instance.currentUser==null?LoginScreen():AllScreens(),
+        home:FirebaseAuth.instance.currentUser==null?LoginScreen():const AllScreens(),
         theme:lightMode
     );
   }
 }
+

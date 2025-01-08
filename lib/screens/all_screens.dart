@@ -39,12 +39,6 @@ class _AllScreensState extends State<AllScreens> {
           "Home",
           style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.person),
-          )
-        ],
         iconTheme: const IconThemeData(
             color: Colors.white,
             size: 30// Set the color of the back button to white
